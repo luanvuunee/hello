@@ -5,8 +5,8 @@ export interface AdminLayoutProps {
 
 export function AdminLayout (props: AdminLayoutProps) {
   return (
-    <div>
+    <h1>
       AdminLayout
-    </div>
+    </h1>
   );
 }

@@ -1,4 +1,5 @@
-import { Navigate, Route, RouteProps } from 'react-router-dom';
+import { AdminLayout } from 'components/Layout';
+import { BrowserRouter, Navigate, Outlet, Route, RouteProps, Routes } from 'react-router-dom';
 
 export interface PrivateRouteProps {}
 
@@ -9,5 +10,9 @@ export function PrivateRoute(props: RouteProps) {
 
   if (!isLoginIn) return <Navigate to="/login" />;
 
-  return <Route {...props}></Route>;
+  return (
+    <Routes>
+      <Route {...props} element={<AdminLayout />}></Route>
+    </Routes>
+  );
 }
