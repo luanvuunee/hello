@@ -1,28 +1,42 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-import { fork, take } from 'redux-saga/effects';
+import { push } from 'connected-react-router';
+import { call, delay, fork, put, take } from 'redux-saga/effects';
 import { authAction, LoggingPayload } from './authSlice';
 
 function* handleLogin(payload: LoggingPayload) {
-  console.log("da fake logint",payload);
+
+  try {
+    yield delay(1500)
+    localStorage.setItem('token', '912837489234892')
+    yield put(authAction.loginSuccess({
+      id: 1,
+      name: 'Vy'
+
+    }))
+    yield put(push('/admin'))
+    
+
+  } catch (error) {
+    // yield put(authAction.loginFailed())
+
+  }
+
 }
-
-
-
 function* handleLogout() {
-  console.log("da fake logout")
+  yield delay(1500)
+  localStorage.removeItem('token')
+  yield put(push('/login'))
 }
 function* WatchLoginFlow() {
   while (true) {
-    const action: PayloadAction<LoggingPayload>  = yield take(authAction.login.type)
+    const action: PayloadAction<LoggingPayload> = yield take(authAction.login.type)
     yield fork(handleLogin, action.payload) // b2 khi ma nguoi dung dispatch  login  => chay handle login chay xong xuong duoi coi logut
-  
-  
-  //LOGOUT=>>
+
+
+    //LOGOUT=>>
     yield take(authAction.logOut.type)
-    yield fork(handleLogout)
+    yield call(handleLogout)
   }
-
-
 
 }
 

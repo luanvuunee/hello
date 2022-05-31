@@ -1,5 +1,8 @@
+
+
 import { Box, Button, Paper, Typography } from '@mui/material';
 import { useAppDispatch } from 'app/hooks';
+import Notifications from 'components/Common/Notifications';
 import { authAction } from '../authSlice';
 
 export interface LoginPageProps {}
@@ -27,6 +30,9 @@ export default function LoginPage(props: LoginPageProps) {
         minHeight: '100vh',
       }}
     >
+      
+        
+    
       <Paper elevation={1} sx={{p:'1rem' ,width:'20vw',"& .MuiTypography-root":{
         textAlign:"center"
       }}}>
@@ -37,6 +43,7 @@ export default function LoginPage(props: LoginPageProps) {
           <Button variant="contained" fullWidth color="primary" onClick={handleLogin} sx={{mb:"4px"}}>
             Login Fake
           </Button>
+
           <Button variant="contained" fullWidth color="primary" onClick={handleLogout}>
             Logout Fake
           </Button>
