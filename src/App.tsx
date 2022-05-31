@@ -4,7 +4,7 @@ import cityApi from 'api/cityAPI';
 import { NotFound, PrivateRoute } from 'components/Common';
 import { AdminLayout } from 'components/Layout/Admin';
 import LoginPage from 'features/auth/pages/LoginPage';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 function App() {
   useEffect(() => {
@@ -14,13 +14,16 @@ function App() {
   });
 
   return (
-    <Routes>
-      <Route path="/login" element={<LoginPage />}/>
-      <Route path="/admin" element={<PrivateRoute />}>
-        <Route path="/admin" element={<AdminLayout />}/>
+    <Switch>
+      <Route path="/login">
+        <LoginPage />
       </Route>
-      <Route path="*" element={<NotFound />}/>
-    </Routes>
+      <PrivateRoute path="/admin">
+        <AdminLayout />
+      </PrivateRoute>
+
+
+    </Switch>
   );
 }
 
