@@ -1,4 +1,4 @@
-import { Navigate, Route, RouteProps } from 'react-router-dom';
+import { Redirect, Route, RouteProps } from 'react-router-dom';
 
 export interface PrivateRouteProps {}
 
@@ -7,7 +7,11 @@ export function PrivateRoute(props: RouteProps) {
 
   const isLoginIn = Boolean(localStorage.getItem('token'));
 
-  if (!isLoginIn) return <Navigate to="/login" />;
+  if (!isLoginIn) return <Redirect to="/login" />;
 
-  return <Route {...props}></Route>;
+  return (
+   
+      <Route {...props}></Route>
+    
+  );
 }
