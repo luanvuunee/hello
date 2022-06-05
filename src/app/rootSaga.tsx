@@ -1,4 +1,5 @@
 import { authSaga } from 'features/auth/authSaga';
+import dashboardSaga from 'features/dashboard/dashboardSaga';
 import { all } from 'redux-saga/effects';
 
 function* firstSaga() {
@@ -6,6 +7,6 @@ function* firstSaga() {
 }
 
 export default function* rootSaga() {
-  yield all([firstSaga(),authSaga()]); 
+  yield all([firstSaga(),authSaga(),dashboardSaga()]); 
 }
  
