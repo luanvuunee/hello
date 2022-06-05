@@ -13,7 +13,7 @@ function* handleLogin(payload: LoggingPayload) {
       name: 'Vy'
 
     }))
-    yield put(push('/admin'))
+    yield put(push('/admin/dashboard'))
     
 
   } catch (error) {
