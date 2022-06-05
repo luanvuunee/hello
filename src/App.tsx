@@ -7,11 +7,7 @@ import LoginPage from 'features/auth/pages/LoginPage';
 import { Route, Switch } from 'react-router-dom';
 
 function App() {
-  useEffect(() => {
-    cityApi.getAll().then((response) => {
-      console.log(response.data);
-    });
-  });
+  
 
   return (
     <Switch>
